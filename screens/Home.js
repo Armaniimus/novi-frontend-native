@@ -1,11 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, {useContext} from 'react';
 
 import Login from '../Components/Login';
+import Overview from '../Components/Overview';
+
+import { LoginContext } from '../context/LoginContextProvider';
 
 const Home = ({navigation}) => {
+    const { loggedIn } = useContext(LoginContext);
+
     return (
-        <Login />
+        loggedIn ? <Overview navigation={navigation} /> : <Login />
     );
 }
 
